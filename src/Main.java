@@ -4,10 +4,8 @@ import personals.Waiter;
 import restaurant.DirMaker;
 import restaurant.Hall;
 
-import java.io.IOException;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         DirMaker dirMaker = new DirMaker();
         dirMaker.makedir();
         Hall.openHall();

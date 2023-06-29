@@ -18,7 +18,7 @@ public class Hall {
         tables.add("table #8");
         tables.add("table #9");
         tables.add("table #10");
-      //  System.out.println(tables);
+
     }
     public static String  getTable(){
         randomtable = (int) (Math.random() * tables.size());
@@ -26,7 +26,6 @@ public class Hall {
         tables.remove(table);
         System.out.println(tables);
         return table;
-
     }
 
 }

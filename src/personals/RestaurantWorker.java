@@ -12,7 +12,7 @@ import java.util.Map;
 public class RestaurantWorker{
     String name;
     String position;
-    String placeOfWork;
+
     public RestaurantWorker(String name, String position) {
         this.name = name;
         this.position = position;
