@@ -2,10 +2,9 @@ package foodanddrinks;
 
 import restaurant.KitchenMenu;
 
-import static restaurant.KitchenMenu.BEEF;
 import static restaurant.KitchenMenu.MANHATTAN;
 
-public class Manhattan extends Food{
+public class Manhattan extends FoodAndDrinks {
     KitchenMenu food = MANHATTAN;
 
     public void IsReady() {

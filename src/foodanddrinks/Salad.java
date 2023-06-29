@@ -3,7 +3,7 @@ package foodanddrinks;
 import restaurant.KitchenMenu;
 
 import static restaurant.KitchenMenu.SALAD;
-public class Salad extends Food{
+public class Salad extends FoodAndDrinks {
     KitchenMenu food = SALAD;
 
     public void IsReady() {

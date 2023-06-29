@@ -4,7 +4,7 @@ import restaurant.KitchenMenu;
 
 import static restaurant.KitchenMenu.POTATO;
 
-public class Potato extends Food{
+public class Potato extends FoodAndDrinks {
     KitchenMenu food = POTATO;
     public void IsReady() {
         System.out.println(food.getName()+" (" + food.getComposition()+")");

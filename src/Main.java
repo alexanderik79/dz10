@@ -1,12 +1,15 @@
 import personals.Barmen;
 import personals.Chef;
 import personals.Waiter;
+import restaurant.DirMaker;
 import restaurant.Hall;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        DirMaker dirMaker = new DirMaker();
+        dirMaker.makedir();
         Hall.openHall();
         Chef chef1 = new Chef("Gannibal", "Chef");
         Waiter waiter1 = new Waiter("Jack");

@@ -4,7 +4,7 @@ import restaurant.KitchenMenu;
 
 import static restaurant.KitchenMenu.BEEF;
 
-public class Beef extends Food{
+public class Beef extends FoodAndDrinks {
     KitchenMenu food = BEEF;
 
     public void IsReady() {

@@ -1,6 +1,6 @@
 package foodanddrinks;
 
-public class Food implements Coooooking{
+public class FoodAndDrinks implements Coooooking{
 
 
     @Override
