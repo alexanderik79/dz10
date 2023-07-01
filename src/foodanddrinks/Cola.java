@@ -3,7 +3,7 @@ import restaurant.KitchenMenu;
 
 import static restaurant.KitchenMenu.COLA;
 
-public class Cola extends FoodAndDrinks {
+public class Cola {
     KitchenMenu food = COLA;
 
     public void IsReady() {
