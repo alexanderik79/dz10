@@ -2,10 +2,7 @@ package personals;
 
 import foodanddrinks.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,20 +18,18 @@ public class RestaurantWorker{
         System.out.println(name +": "+ "Welcome. I am a "+position+" My name is " + name + " i will service you");
     }
 
-    public void starting(File file) {
+    public void starting(File file) throws IOException {
         String table = "";
         HashMap<Integer, Integer> coockingOrder = new HashMap<>();
-
+        BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         String[] subStr;
         String delimeter = " ";
         System.out.println(name +": "+ "read an order: " + file);
         try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
                 subStr = line.split(delimeter);
                 coockingOrder.put(Integer.parseInt(subStr[0]), Integer.parseInt(subStr[1]));
-                // br.close();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -44,59 +39,79 @@ public class RestaurantWorker{
             // System.out.println(pair.getKey()+" "+pair.getValue()+"pcs !!!");
             table = file.getName().substring(6);
         }
-        coocking(coockingOrder, table);
+        coocking(coockingOrder, table, file);
+        br.close();
     }
-    public void coocking(HashMap<Integer, Integer> order, String table) {
-        System.out.println(name +": "+ "Start coocking for "+table);
+    public void coocking(HashMap<Integer, Integer> order, String table, File file) {
+        System.out.println(name + ": " + "Start coocking for " + table);
         Waiter waiter = new Waiter("Garson");
-        for (Map.Entry<Integer, Integer> pair: order.entrySet()
+        for (Map.Entry<Integer, Integer> pair : order.entrySet()
         ) {
             int food = pair.getKey();
             int count = pair.getValue();
             for (int i = 0; i < count; i++) {
-                switch (food){
-                    case 1: Cake cake = new Cake();
+                switch (food) {
+                    case 1:
+                        Cake cake = new Cake();
                         cake.IsReady();
                         cake.coooooking();
                         waiter.bringFood(cake.getName(), table);
                         break;
-                    case 2: Salad salad = new Salad();
+                    case 2:
+                        Salad salad = new Salad();
                         salad.IsReady();
                         salad.coooooking();
                         waiter.bringFood(salad.getName(), table);
                         break;
-                    case 3: Potato potato = new Potato();
+                    case 3:
+                        Potato potato = new Potato();
                         potato.IsReady();
                         potato.coooooking();
                         waiter.bringFood(potato.getName(), table);
                         break;
-                    case 4: Beef beef = new Beef();
+                    case 4:
+                        Beef beef = new Beef();
                         beef.IsReady();
                         beef.coooooking();
                         waiter.bringFood(beef.getName(), table);
                         break;
-                    case 5: BloodyMary bloodyMary = new BloodyMary();
+                    case 5:
+                        BloodyMary bloodyMary = new BloodyMary();
                         bloodyMary.IsReady();
                         bloodyMary.coooooking();
                         waiter.bringFood(bloodyMary.getName(), table);
                         break;
-                    case 6: Margaritta margaritta = new Margaritta();
+                    case 6:
+                        Margaritta margaritta = new Margaritta();
                         margaritta.IsReady();
                         margaritta.coooooking();
                         waiter.bringFood(margaritta.getName(), table);
                         break;
-                    case 7: GordonPink gordonPink = new GordonPink();
+                    case 7:
+                        GordonPink gordonPink = new GordonPink();
                         gordonPink.IsReady();
                         gordonPink.coooooking();
                         waiter.bringFood(gordonPink.getName(), table);
                         break;
-                    case 8: Manhattan manhattan = new Manhattan();
+                    case 8:
+                        Manhattan manhattan = new Manhattan();
                         manhattan.IsReady();
                         manhattan.coooooking();
                         waiter.bringFood(manhattan.getName(), table);
                         break;
+                    case 9:
+                        Cola cola = new Cola();
+                        cola.IsReady();
+                        cola.coooooking();
+                        waiter.bringFood(cola.getName(), table);
+                        break;
                 }
             }
         }
+//        System.out.println(file + "!!!!!!!!!!!!!!!!!!!!!!!!");
+//        if (file.delete()) {
+//            System.out.println(123);
+//
+//        }
     }
 }

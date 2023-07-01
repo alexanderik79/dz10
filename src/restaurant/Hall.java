@@ -8,6 +8,12 @@ public class Hall {
     public static ArrayList<String> tables =  new ArrayList<>();
 
     public static void openHall(){
+        DeleteOldOrders deleteOldOrders = new DeleteOldOrders();
+        deleteOldOrders.deleteOldOrdersBar();
+        deleteOldOrders.deleteOldOrdersKitchen();
+
+        System.out.println("\n Open restaurant !!!");
+
         tables.add("table #1");
         tables.add("table #2");
         tables.add("table #3");
@@ -27,5 +33,4 @@ public class Hall {
         System.out.println(tables);
         return table;
     }
-
 }

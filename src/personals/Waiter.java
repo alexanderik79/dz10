@@ -1,5 +1,6 @@
 package personals;
 
+import restaurant.DeleteOldOrders;
 import restaurant.Hall;
 import restaurant.KitchenMenu;
 import restaurant.OrderFood;
@@ -12,15 +13,14 @@ public class Waiter {
 
     public Waiter(String name) {this.name = name;}
 
-
     public void reserveTable() {
         table = Hall.getTable();
     }
 
-
     public void bringFood(String food, String table) {
         System.out.println(name +": "+ food + " is ready. I am bringing you a dish to the " + table);
     }
+
 
     public void greeting() {
         System.out.println(name +": "+ "Welcome. My name is " + name + " i will service you");
@@ -45,6 +45,13 @@ public class Waiter {
 
         while (scanner.hasNext() == true) {
             meal = scanner.nextLine();
+//            for (KitchenMenu food : KitchenMenu.values()
+//            ) {
+//                if ((!food.getName().equals(meal))&&(!food.getName().equals("y"))&&(!food.getName().equals("n"))) {
+//                    System.out.println(name + ": We don`t have this. Sorry.");
+//                    break;}
+//            }
+
             for (KitchenMenu food : KitchenMenu.values()
             ) {
                 if (food.getName().equals(meal)) {
@@ -53,17 +60,15 @@ public class Waiter {
                     orderFood.makeOrder(food.getNumber(), quantity, "kitchen");
                     orderFood.makeOrderToClient(quantity, meal);
                     System.out.println(name +": "+ "Anything else? y/n");
-                     if (scanner.nextLine().equals("y")) {
-                        System.out.println(name +": "+ "What else?");
-                    } else {
-                        break;
-                    }
                 }
             }
             if (meal.equals("n")){
                 System.out.println(name +": "+ "Thank you. Your order is:\n_____________________________");
                 orderFood.printOrder();
                 break;
+            }
+            if (meal.equals("y")){
+                System.out.println(name +": "+ "What else?");
             }
         }
     }
@@ -82,6 +87,7 @@ public class Waiter {
 
         while (scanner.hasNext() == true) {
             meal = scanner.nextLine();
+
             for (KitchenMenu food : KitchenMenu.values()
             ) {
                 if (food.getName().equals(meal)) {
@@ -102,6 +108,9 @@ public class Waiter {
                 orderFood.printOrder();
                 System.out.println("It will take some minutes");
                 break;
+            }
+            if (meal.equals("y")){
+                System.out.println(name +": "+ "What else?");
             }
         }
     }

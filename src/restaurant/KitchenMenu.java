@@ -8,7 +8,8 @@ public enum KitchenMenu {
     BLOODYMARY("Bloody Mary", 5, "drinks", "vodka, tomato juice"),
     MARGARITTA("Margaritta", 6, "drinks", "vodka, orange juice"),
     GORDONPINK("Gordon Pink", 7, "drinks", "jin gordon, limonade"),
-    MANHATTAN("Manhattan", 8, "drinks", "rum, cola");
+    MANHATTAN("Manhattan", 8, "drinks", "rum, cola"),
+    COLA("Cola", 9, "drinks", "cola");
 
     String name;
     int number;

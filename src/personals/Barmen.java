@@ -1,6 +1,7 @@
 package personals;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Barmen extends RestaurantWorker{
     public String placeOfWork = "Bar";
@@ -14,7 +15,11 @@ public class Barmen extends RestaurantWorker{
         {
             if(files.isFile()){
                 System.out.println(files.getName());
-                starting(files);
+                try {
+                    starting(files);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
