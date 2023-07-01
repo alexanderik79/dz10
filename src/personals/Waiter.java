@@ -21,7 +21,6 @@ public class Waiter {
         System.out.println(name +": "+ food + " is ready. I am bringing you a dish to the " + table);
     }
 
-
     public void greeting() {
         System.out.println(name +": "+ "Welcome. My name is " + name + " i will service you");
     }
@@ -41,41 +40,39 @@ public class Waiter {
             }
         }
         Scanner scanner = new Scanner(System.in);
+        Scanner scannerint = new Scanner(System.in);
+
         String meal;
+        String yesNo = "";
+        int quantity = 0;
 
-        while (scanner.hasNext() == true) {
+        while (true) {
+            if("n".equals(yesNo)||"N".equals(yesNo)){break;}
             meal = scanner.nextLine();
-//            for (KitchenMenu food : KitchenMenu.values()
-//            ) {
-//                if ((!food.getName().equals(meal))&&(!food.getName().equals("y"))&&(!food.getName().equals("n"))) {
-//                    System.out.println(name + ": We don`t have this. Sorry.");
-//                    break;}
-//            }
-
-            for (KitchenMenu food : KitchenMenu.values()
-            ) {
-                if (food.getName().equals(meal)) {
-                    System.out.println(name +": "+ "How much?");
-                    int quantity = scanner.nextInt();
-                    orderFood.makeOrder(food.getNumber(), quantity, "kitchen");
-                    orderFood.makeOrderToClient(quantity, meal);
-                    System.out.println(name +": "+ "Anything else? y/n");
+            meal = CaseInSensitivity(meal);
+            if (isExist(meal)) {
+                for (KitchenMenu food : KitchenMenu.values()
+                ) {
+                    if (food.getName().equals(meal)) {
+                        System.out.println(name + ": " + "How much "+meal+"?");
+                        quantity = scannerint.nextInt();
+                        orderFood.makeOrder(food.getNumber(), quantity, "kitchen");
+                        orderFood.makeOrderToClient(quantity, meal);
+                        System.out.println(name + ": " + "Anything else? y/n");
+                        yesNo = scanner.nextLine();
+                        if("n".equals(yesNo)||"N".equals(yesNo)){break;}
+                        else if("y".equals(yesNo)||"Y".equals(yesNo)) {
+                            System.out.println(name + ": What else?");
+                        }
+                    }
                 }
-            }
-            if (meal.equals("n")){
-                System.out.println(name +": "+ "Thank you. Your order is:\n_____________________________");
-                orderFood.printOrder();
-                break;
-            }
-            if (meal.equals("y")){
-                System.out.println(name +": "+ "What else?");
-            }
+            }else {System.out.println(name + ": Sorry, we don`t have it.\n Want something else?");}
         }
     }
     public void starting2() {
         OrderFood orderFood = new OrderFood(table);
 
-        System.out.println(name +": "+ "Here is a Bar menu. Please make a choice\n__________________________________");
+        System.out.println(name +": "+ "Wanna drink?. Please make a choice\n__________________________________");
         for (KitchenMenu food : KitchenMenu.values()
         ) {
             if (food.getType().equals("drinks")) {
@@ -83,35 +80,51 @@ public class Waiter {
             }
         }
         Scanner scanner = new Scanner(System.in);
+        Scanner scannerint = new Scanner(System.in);
+
         String meal;
+        String yesNo = "";
+        int quantity = 0;
 
-        while (scanner.hasNext() == true) {
+        while (true) {
+            if("n".equals(yesNo)||"N".equals(yesNo)){
+                System.out.println(name+ ": OK. It will takes 10 minutes");
+                break;}
             meal = scanner.nextLine();
-
-            for (KitchenMenu food : KitchenMenu.values()
-            ) {
-                if (food.getName().equals(meal)) {
-                    System.out.println(name +": "+ "How much?");
-                    int quantity = scanner.nextInt();
-                    orderFood.makeOrder(food.getNumber(), quantity, "bar");
-                    orderFood.makeOrderToClient(quantity, meal);
-                    System.out.println(name +": "+ "Anything else? y/n");
-                    if (scanner.nextLine().equals("y")) {
-                        System.out.println(name +": "+ "What else?");
-                    } else {
-                        break;
+            meal = CaseInSensitivity(meal);
+            System.out.println(meal);
+            if (isExist(meal)) {
+                for (KitchenMenu food : KitchenMenu.values()
+                ) {
+                    if (food.getName().equals(meal)) {
+                        System.out.println(name + ": " + "How much "+meal+"?");
+                        quantity = scannerint.nextInt();
+                        orderFood.makeOrder(food.getNumber(), quantity, "bar");
+                        orderFood.makeOrderToClient(quantity, meal);
+                        System.out.println(name + ": " + "Anything else? y/n");
+                        yesNo = scanner.nextLine();
+                        if("n".equals(yesNo)||"N".equals(yesNo)){break;}
+                        else if("y".equals(yesNo)||"Y".equals(yesNo)) {
+                            System.out.println(name + ": What else?");
+                        }
                     }
                 }
-            }
-            if (meal.equals("n")){
-                System.out.println(name +": "+ "Thank you. Your order is:\n_____________________________");
-                orderFood.printOrder();
-                System.out.println("It will take some minutes");
-                break;
-            }
-            if (meal.equals("y")){
-                System.out.println(name +": "+ "What else?");
+            }else {System.out.println(name + ": Sorry, we don`t have it.\n Want something else?");}
+        }
+    }
+    public boolean isExist (String meal){
+        boolean exist = false;
+        for (KitchenMenu food : KitchenMenu.values()
+        ) {
+            if ((food.getName().equals(meal))) {
+                exist = true;
             }
         }
+        return exist;
+    }
+    public String CaseInSensitivity (String meal){
+        meal = meal.toLowerCase();
+        meal = meal.substring(0, 1).toUpperCase() + meal.substring(1);
+        return meal;
     }
 }
