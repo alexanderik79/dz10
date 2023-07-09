@@ -18,8 +18,8 @@ public class Main {
 
         waiter1.reserveTable();
         waiter1.preparing();
-        waiter1.starting();
-        waiter1.starting2();
+        waiter1.starting("food");
+        waiter1.starting("drinks");
         chef1.preparing();
         barmen1.preparing();
     }
