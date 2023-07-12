@@ -7,10 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrderFood {
-    public String table;
-    public OrderFood(String table) {
-        this.table = table;
-    }
+    public String table = Hall.table;
     public Map<Integer, Integer> orderFoodToKitchen = new HashMap<>();
     private Map<String, Integer> orderFoodToClient = new HashMap<>();
 
@@ -29,7 +26,7 @@ public class OrderFood {
     }
     public void makeOrderToClient(String food, int quantity){orderFoodToClient.put(food, quantity);}
     public void printOrder() {
-        System.out.println("Your order is:");
+        System.out.println("Your "+table+" and order is:");
         for (Map.Entry pair: orderFoodToClient.entrySet()
         ) {
             System.out.println(pair.getKey()+" "+pair.getValue()+"pcs");

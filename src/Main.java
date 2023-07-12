@@ -23,7 +23,7 @@ public class Main {
 
         waiter1.reserveTable();
         waiter1.preparing();
-        OrderFood order = new OrderFood(waiter1.reserveTable());
+        OrderFood order = new OrderFood();
         waiter1.starting("food", order);
         waiter1.starting("drinks", order);
         chef1.preparing();

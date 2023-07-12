@@ -16,6 +16,7 @@ public class Waiter {
     public String reserveTable() {
         Supplier<String> randomTable = () -> {return Hall.tables.get((int)(Math.random() * Hall.tables.size()));};
         table = randomTable.get();
+        Hall.table = table;
         return table;
     }
 

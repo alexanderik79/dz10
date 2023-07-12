@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Hall {
 
+
+    public static String table;
     public static int randomtable = 0;
     public static ArrayList<String> tables =  new ArrayList<>();
 
@@ -26,11 +28,11 @@ public class Hall {
         tables.add("table #10");
     }
 
-    public static String getTable(){
-        randomtable = (int) (Math.random() * tables.size());
-        String table = tables.get(randomtable);
-        tables.remove(table);
-        System.out.println(tables);
+    public String getTable(){
+//        randomtable = (int) (Math.random() * tables.size());
+//        String table = tables.get(randomtable);
+//        tables.remove(table);
+//        System.out.println(tables);
         return table;
     }
 }
