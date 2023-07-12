@@ -1,10 +1,10 @@
 package personals;
 
-import foodanddrinks.Beef;
 import restaurant.Hall;
 import restaurant.KitchenMenu;
 import restaurant.OrderFood;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Waiter {
@@ -13,8 +13,10 @@ public class Waiter {
 
     public Waiter(String name) {this.name = name;}
 
-    public void reserveTable() {
-        table = Hall.getTable();
+    public String reserveTable() {
+        Supplier<String> randomTable = () -> {return Hall.tables.get((int)(Math.random() * Hall.tables.size()));};
+        table = randomTable.get();
+        return table;
     }
 
     public void bringFood(String food, String table) {
@@ -34,27 +36,31 @@ public class Waiter {
                 .filter(p -> (priceLow < p.getPrice())&&(priceHigh > p.getPrice()))
                 .sorted(KitchenMenu::compareByPrice)
                 .collect(Collectors.toList());
-        for (KitchenMenu lf: listFood2
+        for (KitchenMenu flf: listFood2
         ) {
-            System.out.println(lf.getNumber() + "." + lf.getName()+ " - " + lf.getPrice()+ "грн.");
+            System.out.println(flf.getNumber() + "." + flf.getName()+ " - " + flf.getPrice()+ "грн.");
         }
     }
 
-    public void starting(String type) {
+    public void starting(String type, OrderFood order) {
         String waiterSentense = null;
-        switch (type){
-            case "food": waiterSentense = "Here is a menu. Please make a choice\n__________________________________";
-            break;
-            case "drinks": waiterSentense = "Wanna drink?. Please make a choice\n__________________________________";
-            break;
-        }
+        String placeOfWork = null;
         String meal;
         String yesNo = "";
         int quantity = 0;
         Scanner scanner = new Scanner(System.in);
         Scanner scannerint = new Scanner(System.in);
-        OrderFood orderFood = new OrderFood(table);
         List<KitchenMenu> listFood = new ArrayList<>();
+        switch (type) {
+            case "food" -> {
+                waiterSentense = "Here is a menu. Please make a choice\n__________________________________";
+                placeOfWork = "Kitchen";
+            }
+            case "drinks" -> {
+                waiterSentense = "Wanna drink?. Please make a choice\n__________________________________";
+                placeOfWork = "Bar";
+            }
+        }
 
         System.out.println(name +": "+ waiterSentense);
         for (KitchenMenu food : KitchenMenu.values()
@@ -66,6 +72,7 @@ public class Waiter {
         }
         System.out.println("__________________________________\nSorted by price\n__________________________________");
         filter(listFood, 0, 1000000);
+
         System.out.println("__________________________________\nDo you wanna filter by price? y/n");
 
         String yesNoFilter = scanner.nextLine();
@@ -80,6 +87,7 @@ public class Waiter {
         while (true) {
             if("n".equals(yesNo)||"N".equals(yesNo)){
                 if(type.equals("drinks")){
+                    order.printOrder();
                     System.out.println(name+ ": OK. It will takes 10 minutes");
                 }
                 break;
@@ -92,8 +100,8 @@ public class Waiter {
                     if (food.getName().equals(meal)) {
                         System.out.println(name + ": " + "How much "+meal+"?");
                         quantity = scannerint.nextInt();
-                        orderFood.makeOrder(food.getNumber(), quantity, "kitchen");
-                        orderFood.makeOrderToClient(quantity, meal);
+                        order.makeOrder(food.getNumber(), quantity, placeOfWork);
+                        order.makeOrderToClient(meal, quantity);
                         System.out.println(name + ": " + "Anything else? y/n");
                         yesNo = scanner.nextLine();
                         if("n".equals(yesNo)||"N".equals(yesNo)){break;}

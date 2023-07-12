@@ -3,12 +3,17 @@ import personals.Chef;
 import personals.Waiter;
 import restaurant.DirMaker;
 import restaurant.Hall;
+import restaurant.OrderFood;
+
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args)  {
+        Hall.openHall();
+
         DirMaker dirMaker = new DirMaker();
         dirMaker.makedir();
-        Hall.openHall();
+
         Chef chef1 = new Chef("Gannibal", "Chef");
         Waiter waiter1 = new Waiter("Jack");
         Barmen barmen1 = new Barmen("Zodiac", "Barmen");
@@ -18,8 +23,9 @@ public class Main {
 
         waiter1.reserveTable();
         waiter1.preparing();
-        waiter1.starting("food");
-        waiter1.starting("drinks");
+        OrderFood order = new OrderFood(waiter1.reserveTable());
+        waiter1.starting("food", order);
+        waiter1.starting("drinks", order);
         chef1.preparing();
         barmen1.preparing();
     }

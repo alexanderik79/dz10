@@ -12,7 +12,7 @@ public class OrderFood {
         this.table = table;
     }
     public Map<Integer, Integer> orderFoodToKitchen = new HashMap<>();
-    public Map<String, Integer> orderFoodToClient = new HashMap<>();
+    private Map<String, Integer> orderFoodToClient = new HashMap<>();
 
     public void makeOrder(int number, int quantity, String placeOfWork){
         orderFoodToKitchen.put(number, quantity);
@@ -27,10 +27,9 @@ public class OrderFood {
             throw new RuntimeException(e);
         }
     }
-    public void makeOrderToClient(int quantity, String food){
-        orderFoodToClient.put(food, quantity);
-    }
+    public void makeOrderToClient(String food, int quantity){orderFoodToClient.put(food, quantity);}
     public void printOrder() {
+        System.out.println("Your order is:");
         for (Map.Entry pair: orderFoodToClient.entrySet()
         ) {
             System.out.println(pair.getKey()+" "+pair.getValue()+"pcs");

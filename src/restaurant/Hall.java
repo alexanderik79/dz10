@@ -24,9 +24,9 @@ public class Hall {
         tables.add("table #8");
         tables.add("table #9");
         tables.add("table #10");
-
     }
-    public static String  getTable(){
+
+    public static String getTable(){
         randomtable = (int) (Math.random() * tables.size());
         String table = tables.get(randomtable);
         tables.remove(table);
