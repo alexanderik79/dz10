@@ -6,7 +6,6 @@ import restaurant.OrderFood;
 public class Main {
     public static void main(String[] args)  {
         Hall.openHall();
-
         DirMaker dirMaker = new DirMaker();
         dirMaker.makedir();
 
@@ -19,13 +18,15 @@ public class Main {
         gravyChef1.greeting();
         pastryChef1.greeting();
         barmen1.greeting();
-        waiter1.greeting();
 
-        waiter1.reserveTable();
-        waiter1.preparing();
-        OrderFood order = new OrderFood();
-        waiter1.starting("food", order);
-        waiter1.starting("drinks", order);
+        while (Hall.hasTable()) {
+            waiter1.greeting();
+            waiter1.reserveTable();
+            waiter1.preparing();
+            OrderFood order = new OrderFood();
+            waiter1.starting("food", order);
+            waiter1.starting("drinks", order);
+        }
         chef1.preparing(chef1.placeOfWork);
         gravyChef1.preparing(gravyChef1.placeOfWork);
         pastryChef1.preparing(pastryChef1.placeOfWork);

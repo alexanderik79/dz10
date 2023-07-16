@@ -17,6 +17,7 @@ public class Waiter {
         Supplier<String> randomTable = () -> {return Hall.tables.get((int)(Math.random() * Hall.tables.size()));};
         table = randomTable.get();
         Hall.table = table;
+        Hall.tables.remove(table);
         return table;
     }
 
@@ -25,7 +26,7 @@ public class Waiter {
     }
 
     public void greeting() {
-        System.out.println(name +": "+ "Welcome. My name is " + name + " i will service you");
+        System.out.println("\n"+name +": "+ "Welcome. My name is " + name + " i will service you");
     }
 
     public void preparing() {
