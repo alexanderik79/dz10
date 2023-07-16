@@ -17,6 +17,7 @@ public class Waiter {
         Supplier<String> randomTable = () -> {return Hall.tables.get((int)(Math.random() * Hall.tables.size()));};
         table = randomTable.get();
         Hall.table = table;
+        Hall.tablesBusy.add(table);
         Hall.tables.remove(table);
         return table;
     }
@@ -27,6 +28,17 @@ public class Waiter {
 
     public void greeting() {
         System.out.println("\n"+name +": "+ "Welcome. My name is " + name + " i will service you");
+    }
+    public boolean greetingPostOrder(String table) {
+        System.out.println("\n"+name +": "+ "Hey! Client at the "+table+" Do you want something else? ");
+        Scanner scanner = new Scanner(System.in);
+        String yesNo = scanner.nextLine().toLowerCase();
+        if (yesNo.equals("n")){
+            Hall.tables.add(table);
+            System.out.println("Buy, buy!");
+ //           Hall.tablesBusy.remove(table);
+            return false;
+        } else return true;
     }
 
     public void preparing() {

@@ -7,17 +7,19 @@ public class Hall {
     public static String table;
     public static int randomtable = 0;
     public static ArrayList<String> tables =  new ArrayList<>();
+    public static ArrayList<String> tablesBusy =  new ArrayList<>();
 
     public static void openHall(){
-        DeleteOldOrders deleteOldOrders = new DeleteOldOrders();
-        deleteOldOrders.deleteOldOrdersBar();
-        deleteOldOrders.deleteOldOrdersKitchen();
+        //DeleteOldOrders deleteOldOrders = new DeleteOldOrders();
+        DirMaker.makedir();
+        DeleteOldOrders.deleteOldOrdersBar();
+        DeleteOldOrders.deleteOldOrdersKitchen();
 
         System.out.println("\nOpen restaurant !!!\n");
 
         tables.add("table #1");
         tables.add("table #2");
-        tables.add("table #3");
+//        tables.add("table #3");
 //        tables.add("table #4");
 //        tables.add("table #5");
 //        tables.add("table #6");
@@ -36,5 +38,8 @@ public class Hall {
 //    }
     public static boolean hasTable(){
         return tables.size() > 0;
+    }
+    public static boolean hasTableBusy(){
+        return tablesBusy.size() > 0;
     }
 }

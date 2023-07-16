@@ -3,7 +3,7 @@ package restaurant;
 import java.io.File;
 
 public class DeleteOldOrders {
-    public void deleteOldOrdersKitchen (){
+    public static void deleteOldOrdersKitchen (){
         File folder = new File("src/resKitchen/");
         for (File file : folder.listFiles())
         {
@@ -26,7 +26,7 @@ public class DeleteOldOrders {
             }
         }
     }
-    public void deleteOldOrdersBar (){
+    public static void deleteOldOrdersBar (){
         File folder = new File("src/resBar/");
         for (File file : folder.listFiles())
         {

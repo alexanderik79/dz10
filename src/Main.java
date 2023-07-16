@@ -1,13 +1,13 @@
 import personals.*;
-import restaurant.DirMaker;
+import restaurant.DeleteOldOrders;
 import restaurant.Hall;
 import restaurant.OrderFood;
 
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         Hall.openHall();
-        DirMaker dirMaker = new DirMaker();
-        dirMaker.makedir();
+
+
 
         Chef chef1 = new Chef("Gannibal", "Chef");
         GravyChef gravyChef1 = new GravyChef("Chegevara", "GravyChef");
@@ -19,17 +19,40 @@ public class Main {
         pastryChef1.greeting();
         barmen1.greeting();
 
-        while (Hall.hasTable()) {
-            waiter1.greeting();
-            waiter1.reserveTable();
-            waiter1.preparing();
-            OrderFood order = new OrderFood();
-            waiter1.starting("food", order);
-            waiter1.starting("drinks", order);
+            while (Hall.hasTable()) {
+                waiter1.greeting();
+                System.out.println("We have those free tables: " + Hall.tables);
+                waiter1.reserveTable();
+                waiter1.preparing();
+                OrderFood order = new OrderFood();
+                waiter1.starting("food", order);
+                waiter1.starting("drinks", order);
+            }
+            chef1.preparing(chef1.placeOfWork);
+            gravyChef1.preparing(gravyChef1.placeOfWork);
+            pastryChef1.preparing(pastryChef1.placeOfWork);
+            barmen1.preparing(barmen1.placeOfWork);
+            DeleteOldOrders.deleteOldOrdersBar();
+            DeleteOldOrders.deleteOldOrdersKitchen();
+
+
+            while (Hall.hasTableBusy()){
+                for (String table: Hall.tablesBusy
+                     ) {
+                    if (waiter1.greetingPostOrder(table)) {
+                        OrderFood order = new OrderFood();
+                        waiter1.starting("food", order);
+                        waiter1.starting("drinks", order);
+                    }
+                    chef1.preparing(chef1.placeOfWork);
+                    gravyChef1.preparing(gravyChef1.placeOfWork);
+                    pastryChef1.preparing(pastryChef1.placeOfWork);
+                    barmen1.preparing(barmen1.placeOfWork);
+                    DeleteOldOrders.deleteOldOrdersBar();
+                    DeleteOldOrders.deleteOldOrdersKitchen();
+                }
+                Hall.tablesBusy.clear();
+            }
         }
-        chef1.preparing(chef1.placeOfWork);
-        gravyChef1.preparing(gravyChef1.placeOfWork);
-        pastryChef1.preparing(pastryChef1.placeOfWork);
-        barmen1.preparing(barmen1.placeOfWork);
     }
-}
+
