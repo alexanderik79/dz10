@@ -7,5 +7,9 @@ import java.io.File;
                 dir.mkdirs();
                 dir = new File("src/resKitchen/");
                 dir.mkdirs();
+                dir = new File("src/resGravyKitchen/");
+                dir.mkdirs();
+                dir = new File("src/resPastryKitchen/");
+                dir.mkdirs();
             }
         }

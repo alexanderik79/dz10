@@ -55,11 +55,11 @@ public class Waiter {
         switch (type) {
             case "food" -> {
                 waiterSentense = "Here is a menu. Please make a choice\n__________________________________";
-                placeOfWork = "Kitchen";
+                placeOfWork = "resKitchen";
             }
             case "drinks" -> {
                 waiterSentense = "Wanna drink?. Please make a choice\n__________________________________";
-                placeOfWork = "Bar";
+                placeOfWork = "resBar";
             }
         }
 
@@ -101,7 +101,7 @@ public class Waiter {
                     if (food.getName().equals(meal)) {
                         System.out.println(name + ": " + "How much "+meal+"?");
                         quantity = scannerint.nextInt();
-                        order.makeOrder(food.getNumber(), quantity, placeOfWork);
+                        order.makeOrder(food.getNumber(), quantity, food.getPlaceOfWork());
                         order.makeOrderToClient(meal, quantity);
                         System.out.println(name + ": " + "Anything else? y/n");
                         yesNo = scanner.nextLine();

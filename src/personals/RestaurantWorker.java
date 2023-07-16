@@ -9,11 +9,14 @@ import java.util.Map;
 public class RestaurantWorker implements Greeting, Coocking{
     String name;
     String position;
+    public String placeOfWork;
 
     public RestaurantWorker(String name, String position) {
         this.name = name;
         this.position = position;
     }
+
+
     @Override
     public void greeting() {
         System.out.println(name +": "+ "Welcome. I am a "+position+" My name is " + name + " i will service you");

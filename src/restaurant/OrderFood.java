@@ -13,7 +13,7 @@ public class OrderFood {
 
     public void makeOrder(int number, int quantity, String placeOfWork){
         orderFoodToKitchen.put(number, quantity);
-        File file = new File("src/res"+placeOfWork+"/order "+table);
+        File file = new File("src/"+placeOfWork+"/order "+table);
         try {
             file.createNewFile();
             FileWriter writer = new FileWriter(file, true);
