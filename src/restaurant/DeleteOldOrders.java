@@ -8,21 +8,21 @@ public class DeleteOldOrders {
         for (File file : folder.listFiles())
         {
             if (file.delete()){
-                System.out.println("Cleaning tables");
+                System.out.println("Cleaning working area");
             }
         }
         File folder2 = new File("src/resPastryKitchen/");
         for (File file : folder2.listFiles())
         {
             if (file.delete()){
-                System.out.println("Cleaning tables");
+                System.out.println("Cleaning working area");
             }
         }
         File folder3 = new File("src/resGravyKitchen/");
         for (File file : folder3.listFiles())
         {
             if (file.delete()){
-                System.out.println("Cleaning tables");
+                System.out.println("Cleaning working area");
             }
         }
     }

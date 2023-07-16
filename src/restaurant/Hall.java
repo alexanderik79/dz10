@@ -14,7 +14,7 @@ public class Hall {
         deleteOldOrders.deleteOldOrdersBar();
         deleteOldOrders.deleteOldOrdersKitchen();
 
-        System.out.println("\n Open restaurant !!!");
+        System.out.println("\nOpen restaurant !!!\n");
 
         tables.add("table #1");
         tables.add("table #2");

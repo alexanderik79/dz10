@@ -9,17 +9,4 @@ public class Chef extends RestaurantWorker {
         super(name, position);
     }
 
-    public void preparing() {
-        File orders = new File("src/" + placeOfWork + "/");
-        for (File files : orders.listFiles()) {
-            if (files.isFile()) {
-                System.out.println(files.getName());
-                try {
-                    starting(files);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-    }
 }

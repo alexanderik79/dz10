@@ -9,13 +9,11 @@ import java.util.Map;
 public class RestaurantWorker implements Greeting, Coocking{
     String name;
     String position;
-    public String placeOfWork;
 
     public RestaurantWorker(String name, String position) {
         this.name = name;
         this.position = position;
     }
-
 
     @Override
     public void greeting() {
@@ -101,6 +99,35 @@ public class RestaurantWorker implements Greeting, Coocking{
                         cola.IsReady();
                         waiter.bringFood(cola.getName(), table);
                         break;
+                    case 10:
+                        Icecream icecream = new Icecream();
+                        icecream.IsReady();
+                        waiter.bringFood(icecream.getName(), table);
+                        break;
+                    case 11:
+                        Pie pie = new Pie();
+                        pie.IsReady();
+                        waiter.bringFood(pie.getName(), table);
+                        break;
+                    case 12:
+                        CreamSoup creamSoup = new CreamSoup();
+                        creamSoup.IsReady();
+                        waiter.bringFood(creamSoup.getName(), table);
+                        break;
+                }
+            }
+        }
+    }
+    public void preparing(String placeOfWork) {
+        File orders = new File("src/"+placeOfWork+"/");
+        for (File files : orders.listFiles())
+        {
+            if(files.isFile()){
+                System.out.println(files.getName());
+                try {
+                    starting(files);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }

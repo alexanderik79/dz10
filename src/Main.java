@@ -3,8 +3,6 @@ import restaurant.DirMaker;
 import restaurant.Hall;
 import restaurant.OrderFood;
 
-import java.util.function.Supplier;
-
 public class Main {
     public static void main(String[] args)  {
         Hall.openHall();
@@ -28,8 +26,9 @@ public class Main {
         OrderFood order = new OrderFood();
         waiter1.starting("food", order);
         waiter1.starting("drinks", order);
-        chef1.preparing();
-
-        barmen1.preparing();
+        chef1.preparing(chef1.placeOfWork);
+        gravyChef1.preparing(gravyChef1.placeOfWork);
+        pastryChef1.preparing(pastryChef1.placeOfWork);
+        barmen1.preparing(barmen1.placeOfWork);
     }
 }
