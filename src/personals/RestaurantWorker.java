@@ -21,6 +21,7 @@ public class RestaurantWorker implements Greeting, Coocking{
     }
 
     public void starting(File file) throws IOException {
+
         String table = "";
         HashMap<Integer, Integer> coockingOrder = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -123,7 +124,7 @@ public class RestaurantWorker implements Greeting, Coocking{
         for (File files : orders.listFiles())
         {
             if(files.isFile()){
-                System.out.println(files.getName());
+                System.out.println("next step: "+files.getName());
                 try {
                     starting(files);
                 } catch (IOException e) {
