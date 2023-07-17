@@ -38,10 +38,7 @@ public class RestaurantWorker implements Greeting, Coocking{
             throw new RuntimeException(e);
         }
         for (Map.Entry pair: coockingOrder.entrySet()
-        ) {
-            // System.out.println(pair.getKey()+" "+pair.getValue()+"pcs !!!");
-            table = file.getName().substring(6);
-        }
+        ) {table = file.getName().substring(6);}
         coocking(coockingOrder, table, file);
         br.close();
     }
