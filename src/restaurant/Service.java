@@ -1,10 +1,9 @@
 package restaurant;
-
 import personals.*;
 
-public class Service extends Thread {
+public class Service {
 
-    public void run() {
+    public void start(int countTables) {
         Chef chef1 = new Chef("Gannibal", "Chef");
         GravyChef gravyChef1 = new GravyChef("Chegevara", "GravyChef");
         PastryChef pastryChef1 = new PastryChef("Givi", "PastryChef");
@@ -15,9 +14,7 @@ public class Service extends Thread {
         pastryChef1.greeting();
         barmen1.greeting();
 
-        while (Hall.tables.size()>7) {                      //до 3-х столов
-//        while (Hall.tables.size()>5) {                    //до 5-ти столов
-//        while (Hall.hasTable()) {                         //до полного заполнения ресторана
+        while (Hall.tables.size()>(10-countTables)) {
             waiter1.greeting();
             System.out.println("We have those free tables: " + Hall.tables);
             waiter1.reserveTable();
@@ -32,7 +29,6 @@ public class Service extends Thread {
         barmen1.preparing(barmen1.placeOfWork);
         DeleteOldOrders.deleteOldOrdersBar();
         DeleteOldOrders.deleteOldOrdersKitchen();
-
 
         while (Hall.hasTableBusy()) {
             for (String table : Hall.tablesBusy
