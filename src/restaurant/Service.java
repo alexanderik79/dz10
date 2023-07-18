@@ -30,6 +30,7 @@ public class Service {
         DeleteOldOrders.deleteOldOrdersBar();
         DeleteOldOrders.deleteOldOrdersKitchen();
 
+
         while (Hall.hasTableBusy()) {
             for (String table : Hall.tablesBusy
             ) {
