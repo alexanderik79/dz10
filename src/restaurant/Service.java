@@ -1,6 +1,10 @@
 package restaurant;
 import personals.*;
 
+import java.util.Iterator;
+
+import static restaurant.Hall.*;
+
 public class Service {
 
     public void start() {
@@ -31,22 +35,25 @@ public class Service {
         DeleteOldOrders.deleteOldOrdersBar();
         DeleteOldOrders.deleteOldOrdersKitchen();
 
-        while (Hall.hasTableBusy()) {
+        while (hasTableBusy()) {
             for (String table : Hall.tablesBusy
             ) {
+
                 if (waiter1.greetingPostOrder(table)) {
                     OrderFood order = new OrderFood();
                     waiter1.starting("food", order);
                     waiter1.starting("drinks", order);
                 }
+
                 chef1.preparing(chef1.placeOfWork);
                 gravyChef1.preparing(gravyChef1.placeOfWork);
                 pastryChef1.preparing(pastryChef1.placeOfWork);
                 barmen1.preparing(barmen1.placeOfWork);
                 DeleteOldOrders.deleteOldOrdersBar();
                 DeleteOldOrders.deleteOldOrdersKitchen();
+
             }
-            Hall.tablesBusy.clear();
+            tablesBusy.clear();
         }
     }
 }

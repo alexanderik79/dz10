@@ -7,7 +7,7 @@ public class Hall {
     public static volatile String table;
     public static int randomtable = 0;
     public static volatile ArrayList<String> tables =  new ArrayList<>();
-    public static volatile Set<String> tablesBusy =  new HashSet<>();
+    public static Set<String> tablesBusy =  new HashSet<>();
 
     public static void openHall(int countTables){
         DirMaker.makedir();

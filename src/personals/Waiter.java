@@ -36,7 +36,6 @@ public class Waiter {
         if (yesNo.equals("n")){
             Hall.tables.add(table);
             System.out.println("Buy, buy!");
-
             return false;
         } else return true;
     }
