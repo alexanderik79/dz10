@@ -3,7 +3,7 @@ import personals.*;
 
 public class Service {
 
-    public void start(int countTables) {
+    public void start() {
         Chef chef1 = new Chef("Gannibal", "Chef");
         GravyChef gravyChef1 = new GravyChef("Chegevara", "GravyChef");
         PastryChef pastryChef1 = new PastryChef("Givi", "PastryChef");
@@ -14,7 +14,8 @@ public class Service {
         pastryChef1.greeting();
         barmen1.greeting();
 
-        while (Hall.tables.size()>(10-countTables)) {
+        while (Hall.hasTable()){
+   //     while (Hall.tables.size()>(10-countTables)) {
             waiter1.greeting();
             System.out.println("We have those free tables: " + Hall.tables);
             waiter1.reserveTable();
@@ -29,7 +30,6 @@ public class Service {
         barmen1.preparing(barmen1.placeOfWork);
         DeleteOldOrders.deleteOldOrdersBar();
         DeleteOldOrders.deleteOldOrdersKitchen();
-
 
         while (Hall.hasTableBusy()) {
             for (String table : Hall.tablesBusy

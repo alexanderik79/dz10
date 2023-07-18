@@ -3,9 +3,9 @@ import restaurant.Service;
 
 public class Main {
     public static void main(String[] args) {
-        Hall.openHall();
+        Hall.openHall(2);
         Service service = new Service();
-        service.start(3); // количество столов к обслуживанию (мах 10)
+        service.start();
     }
 }
 

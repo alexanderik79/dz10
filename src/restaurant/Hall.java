@@ -1,31 +1,23 @@
 package restaurant;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Hall {
 
     public static volatile String table;
     public static int randomtable = 0;
     public static volatile ArrayList<String> tables =  new ArrayList<>();
-    public static volatile ArrayList<String> tablesBusy =  new ArrayList<>();
+    public static volatile Set<String> tablesBusy =  new HashSet<>();
 
-    public static void openHall(){
+    public static void openHall(int countTables){
         DirMaker.makedir();
         DeleteOldOrders.deleteOldOrdersBar();
         DeleteOldOrders.deleteOldOrdersKitchen();
 
         System.out.println("\nOpen restaurant !!!\n");
-
-        tables.add("table #1");
-        tables.add("table #2");
-        tables.add("table #3");
-        tables.add("table #4");
-        tables.add("table #5");
-        tables.add("table #6");
-        tables.add("table #7");
-        tables.add("table #8");
-        tables.add("table #9");
-        tables.add("table #10");
+        for (int i = 1; i <= countTables; i++) {
+            tables.add("table #"+i);
+        }
     }
 
 //    public String getTable(){
