@@ -1,13 +1,12 @@
 package restaurant;
 import personals.*;
 
-import java.util.Iterator;
 
 import static restaurant.Hall.*;
 
-public class Service {
+public class Service implements Runnable{
 
-    public void start() {
+    public void run() {
         Chef chef1 = new Chef("Gannibal", "Chef");
         GravyChef gravyChef1 = new GravyChef("Chegevara", "GravyChef");
         PastryChef pastryChef1 = new PastryChef("Givi", "PastryChef");

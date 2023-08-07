@@ -12,6 +12,7 @@ public class OrderFood {
     private Map<String, Integer> orderFoodToClient = new HashMap<>();
 
     public void makeOrder(int number, int quantity, String placeOfWork){
+
         orderFoodToKitchen.put(number, quantity);
         File file = new File("src/"+placeOfWork+"/order "+table);
         try {
