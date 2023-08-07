@@ -6,7 +6,11 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class RestaurantWorker implements Greeting, Coocking{
+
     String name;
     String position;
 
@@ -21,7 +25,7 @@ public class RestaurantWorker implements Greeting, Coocking{
     }
 
     public void starting(File file) throws IOException {
-
+        Logger logger = LoggerFactory.getLogger(RestaurantWorker.class);
         String table = "";
         HashMap<Integer, Integer> coockingOrder = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -29,6 +33,7 @@ public class RestaurantWorker implements Greeting, Coocking{
         String[] subStr;
         String delimeter = " ";
         System.out.println(name +": "+ "read an order: " + file);
+        logger.info("read an order");
         try {
             while ((line = br.readLine()) != null) {
                 subStr = line.split(delimeter);

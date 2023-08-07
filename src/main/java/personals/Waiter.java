@@ -1,15 +1,18 @@
 package personals;
 
+import lombok.Getter;
+import lombok.Setter;
 import restaurant.Hall;
 import restaurant.KitchenMenu;
 import restaurant.OrderFood;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-
+@Getter
+@Setter
 public class Waiter {
-    String name;
-    String table;
+   private String name;
+   private String table;
 
     public Waiter(String name) {this.name = name;}
 
